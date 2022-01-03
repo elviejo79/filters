@@ -28,13 +28,13 @@ def format(source, language, css_class, options, md, classes=None, id_value='', 
         .replace("<", "&lt;") \
         .replace(">", "&gt;")
     code_block = "<pre><code class={}>{}</code></pre>".format(language, patched_source)
-    ann = "<div class=\"highlight\"><span class="filename">{}</span>{}</div>"
+    ann = "<div class=\"{}\"><span class=\"filename\">{}</span>{}</div>"
     if "file" in options:
         name = "«file://{}»".format(options["file"])
-        return ann.format(name, code_block)
+        return ann.format(css_class, name, code_block)
     elif "id" in options:
         name = "«{}»".format(options["id"])
-        return ann.format(name, code_block)
+        return ann.format(css_class, name, code_block)
     return code_block
 ```
 
